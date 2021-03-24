@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <?php
 session_start();
@@ -18,6 +19,47 @@ if(!isset($_SESSION['user_email'])){
     <link rel="stylesheet" type="text/css" href="style/home_style2.css">
 
 </head>
+<!--CSS written by Jamie Sumilang-->
+<style> 
+    #scroll_messages{
+        max-height: 500px;
+        overflow: scroll;
+    }
+    #btn-msg{
+        width: 20%;
+        height: 28px;
+        border-radius: 5px;
+        margin: 5px;
+        border: none;
+        color: #fff;
+        float: left;
+        background-color: #2ecc71;
+    }
+    #select_user{
+        max-height: 500px;
+        overflow: scroll;
+    }
+    #green{
+        background-color: #2ecc71;
+        border-color: #27ae60;
+        width: 45%;
+        padding: 2.5px;
+        font-size: 16px;
+        border-radius: 3px;
+        float: right;
+        margin-bottom: 5px;
+    }
+    #blue{
+        background-color: #3498db;
+        border-color: #2980b9;
+        width: 45%;
+        padding: 2.5px;
+        font-size: 16px;
+        border-radius: 3px;
+        float: right;
+        margin-bottom: 5px;
+    }
+</style>
 <body>
 <div class="row">
 <?php 
@@ -51,14 +93,14 @@ if(!isset($_SESSION['user_email'])){
 
                 $user_id = $row_user['user_id'];
                 $user_name = $row_user['user_name'];
-                $first_name = $row_user['first_name'];
-                $last_name = $row_user['last_name'];
+                $first_name = $row_user['f_name'];
+                $last_name = $row_user['l_name'];
                 $user_image = $row_user['user_image'];
 
                 echo"
                     <div class='container-fluid'>
                         <a style='text-decoration: none; cursor: pointer; color: #38997F0;'
-                        href=;message.php?u_id=$user_id'>
+                        href=messages.php?u_id=$user_id'>
                         <img class='img-circle' src='users/$user_image' width='90px'
                         height='80px' title='user_name'> <strong>&nbsp $first_name
                         $last_name</strong><br><br>
@@ -158,8 +200,8 @@ if(!isset($_SESSION['user_email'])){
 
                     $user_id = $row['user_id'];
                     $user_name = $row['user_name'];
-                    $first_name = $row['first_name'];
-                    $last_name = $row['last_name'];
+                    $f_name = $row['f_name'];
+                    $l_name = $row['l_name'];
                     $describe_user = $row['describe_user'];
                     $user_country = $row['user_country'];
                     $user_image = $row['user_image'];
@@ -182,7 +224,7 @@ if(!isset($_SESSION['user_email'])){
                                 <br><br>
                                 <ul class='list-group'>
                                     <li class='list-group-item' title='Username'><strong>
-                                    $first_name $last_name</strong></li>
+                                    $f_name $l_name</strong></li>
 
                                     <li class='list-group-item' title='User status'><strong
                                     style='color: grey;'>$describe_user</strong></li>
@@ -214,5 +256,4 @@ if(!isset($_SESSION['user_email'])){
 <!--</div>-->
 </body>
 </html>
-
 <!--Written by Ameera Sanaullah-->
