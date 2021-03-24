@@ -446,7 +446,7 @@ function get_posts(){
             $u_email = $row['user_email'];
 
             if($u_email != $user_email){
-                echo "<script>alertwindow.open('my_post.php?u_id=$user_id', '_self')</script>";
+                echo "<script>window.open('my_post.php?u_id=$user_id', '_self')</script>";
             }else{
                 if($content=="No" && strlen($upload_image) >= 1){
                     echo"
@@ -556,7 +556,7 @@ function get_posts(){
             $search_query = htmlentities($_GET['user_query']);
         }
         $get_posts = "select * from posts where post_content like '%$search_query%' OR upload_image
-            like '%$search_query'";
+            like '%$search_query%'";
         $run_posts = mysqli_query($con, $get_posts);
         
         while($row_posts=mysqli_fetch_array($run_posts)){
@@ -571,8 +571,8 @@ function get_posts(){
             $row_user = mysqli_fetch_array($run_user);
 
             $user_name = $row_user['user_name'];
-            $first_name = $row_user['first_name'];
-            $last_name = $row_user['last_name'];
+            $first_name = $row_user['f_name'];
+            $last_name = $row_user['l_name'];
             $user_image = $row_user['user_image'];
 
             //displaying posts 
@@ -684,7 +684,7 @@ function get_posts(){
 
         if(isset($_GET['search_user_btn'])){
             $search_query = htmlentities($_GET['search_user']);
-            $get_user = "select * from where f_name like '%$search_query' OR l_name like '%$search_query' OR user_name like '%$search_query' ";
+            $get_user = "select * from where f_name like '%$search_query%' OR l_name like '%$search_query%' OR user_name like '%$search_query%' ";
         }
         else{
             $get_user = "select * from users";
@@ -695,8 +695,8 @@ function get_posts(){
         while ($row_user=mysqli_fetch_array($run_user)) {
 
             $user_id = $row_user['user_id'];
-            $first_name = $row_user['first_name'];
-            $last_name = $row_user['last_name'];
+            $f_name = $row_user['f_name'];
+            $l_name = $row_user['l_name'];
             $username = $row_user['user_name'];
             $user_image = $row_user['user_image'];
 
@@ -712,8 +712,8 @@ function get_posts(){
                             </a>
                         </div><br><br>
                         <div class='col-sm-6'>
-                            <a style='text-decoration:none;cursor:pointer;color:#3897f0;'href='user_profile.phph?u_id=$user_id'>
-                            <strong><h2>$first_name $last_name</h2></strong>
+                            <a style='text-decoration:none;cursor:pointer;color:#3897f0;'href='user_profile.php?u_id=$user_id'>
+                            <strong><h2>$f_name $l_name</h2></strong>
                             </a>
                         </div>
                         <div class='col-sm-3'>
