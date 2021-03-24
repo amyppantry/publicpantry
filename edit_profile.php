@@ -31,13 +31,13 @@ if (isset($_SESSION['user_email'])) {
 				<tr>
 					<td style="font-weight: bold;">Change Your Firstname</td>
 					<td>
-						<input class="form-control" type="text" name="first_name" required value="<?php echo $first_name; ?>">
+						<input class="form-control" type="text" name="f_name" required value="<?php echo $first_name; ?>">
 					</td>
 				</tr>
 				<tr>
 					<td style="font-weight: bold;">Change Your Lastname</td>
 					<td>
-						<input class="form-control" type="text" name="last_name" required value="<?php echo $last_name; ?>">
+						<input class="form-control" type="text" name="l_name" required value="<?php echo $last_name; ?>">
 					</td>
 				</tr>
 				<tr>
@@ -71,14 +71,14 @@ if (isset($_SESSION['user_email'])) {
 				<tr>
 					<td style="font-weight: bold;">Password</td>
 					<td>
-						<input class="form-control" type="password" name="pass" id="mypass" required value="<?php echo $pass; ?>"> <!--please check this NAME if it matches with the table, I forgot what it is. DO NOT CHANGE TYPE="password" or ID="mypass" THOUGH.--> 
+						<input class="form-control" type="password" name="u_pass" id="mypass" required value="<?php echo $user_pass; ?>">  
 						<input type="checkbox" onclick="show_password()"><strong>Show Password</strong>
 					</td>
 				</tr>
 				<tr>
 					<td style="font-weight: bold;">Email</td>
 					<td>
-						<input class="form-control" type="email" name="e_mail" required value="<?php echo $e_mail; ?>"> <!--please check the email NAME and REQUIRED VALUE only if it matches to the table I forgot-->
+						<input class="form-control" type="email" name="u_email" required value="<?php echo $user_email; ?>"> 
 					</td>
 				</tr>
 				<tr>
@@ -183,18 +183,18 @@ if (isset($_SESSION['user_email'])) {
 </html>
 <?php 
 	if (isset($_POST['update'])) {
-		$first_name = htmlentities($_POST['first_name']);
-		$last_name = htmlentities($_POST['last_name']);
+		$f_name = htmlentities($_POST['f_name']);
+		$l_name = htmlentities($_POST['l_name']);
 		$u_name = htmlentities($_POST['u_name']);
 		$describe_user = htmlentities($_POST['describe_user']);
 		$Relationship_status = htmlentities($_POST['Relationship']);
-		$pass = htmlentities($_POST['pass']); //double check this variable pls 
-		$e_mail = htmlentities($_POST['e_mail']); //double check, i think the variable is right but I could be wrong cus I can't remember 
+		$u_pass = htmlentities($_POST['u_pass']); 
+		$u_email = htmlentities($_POST['u_email']);
 		$u_country = htmlentities($_POST['u_country']);
 		$u_gender = htmlentities($_POST['u_gender']);
 		$u_birthday = htmlentities($_POST['u_birthday']);
 
-		$update = "update users set first_name='$first_name', last_name='$last_name', user_name='$u_name' describe_user='$describe_user',Relationship='$Relationship_status', pass='$pass', e_mail='$e_mail', user_country='$u_country', user_gender='$u_gender', user_birthday='$u_birthday' where user_id='$user_id'";
+		$update = "update users set f_name='$f_name', l_name='$_name', user_name='$u_name' describe_user='$describe_user',Relationship='$Relationship_status', u_pass='$u_pass', user_email='$u_email', user_country='$u_country', user_gender='$u_gender', user_birthday='$u_birthday' where user_id='$user_id'";
 
 		$run = mysqli_query($con, $update);
 
@@ -205,3 +205,4 @@ if (isset($_SESSION['user_email'])) {
 		}
 	}
 ?>
+<!--written by Jamie Sumilang-->
