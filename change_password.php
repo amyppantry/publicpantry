@@ -3,7 +3,7 @@
 session_start();
 include("includes/connection.php");
 
-if(isset($_SESSION['e_mail'])){
+if(isset($_SESSION['user_mail'])){
     header("location: index.php");
 }
 ?>
@@ -76,7 +76,7 @@ if(isset($_SESSION['e_mail'])){
 <?php
     if(isset($_POST['change'])){
 
-        $user = $_SESSION['e_mail'];
+        $user = $_SESSION['user_email'];
         $get_user = "select * from users where user_email='$user'";
         $run_user = mysqli_query($con, $get_user);
         $row = mysqli_fetch_array($run_user);
